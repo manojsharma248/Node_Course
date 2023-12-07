@@ -11,20 +11,20 @@ exports.getAddProduct = (req, res, next) => {
 
 exports.postAddProduct = (req, res, next) => {
   const product = new Product(req.body.title);
-  console.log("product", product, req.body.title);
   product.save();
   res.redirect("/");
 };
 
 exports.getProducts = (req, res, next) => {
-  const products = Product.fetchAll();
-  console.log(products);
-  res.render("shop", {
-    prods: products,
-    pageTitle: "Shop",
-    path: "/",
-    hasProducts: products.length > 0,
-    activeShop: true,
-    productCSS: true,
+  Product.fetchAll((products) => {
+    console.log("list of products", products);
+    res.render("shop", {
+      prods: products,
+      pageTitle: "Shop",
+      path: "/",
+      hasProducts: products.length > 0,
+      activeShop: true,
+      productCSS: true,
+    });
   });
 };
