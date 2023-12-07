@@ -8,15 +8,13 @@ const app = express();
 app.engine("hbs", engine({ defaultLayout: false }));
 app.set("view engine", "hbs");
 app.set("views", "./views");
-// app.set("view engine", "pug");
+const errorController = require("./controller/error");
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/admin", adminRoutes.router);
+app.use("/admin", adminRoutes);
 app.use(shopRoutes);
-app.use((req, res, next) => {
-  res.status(404).render("404");
-});
+app.use(errorController.get404);
 app.listen(3000);
