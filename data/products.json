@@ -1,1 +1,37 @@
-[{"title":"dffsa"},{"title":"Another"},{"title":"fasdfdas"},{"title":"Second Book"},{"title":"teweawe"}]
+[
+  { "title": "dffsa" },
+  { "title": "Another" },
+  { "title": "fasdfdas" },
+  { "title": "Second Book" },
+  { "title": "teweawe" },
+  {
+    "title": "image",
+    "imageUrl": "image url",
+    "decscritpion": "100",
+    "price": "testing image"
+  },
+  {
+    "title": "dfds",
+    "imageUrl": "ffdfdf",
+    "decscritpion": "100",
+    "price": "dsd"
+  },
+  {
+    "title": "dsds",
+    "imageUrl": "sdsds",
+    "decscritpion": "3",
+    "price": "dsdsadsadsa"
+  },
+  {
+    "title": "ssdsd",
+    "imageUrl": "dsds",
+    "decscritpion": "dsdsds",
+    "price": "100"
+  },
+  {
+    "title": "A book",
+    "imageUrl": "https://media.istockphoto.com/id/1464539429/photo/thoughtful-business-man-with-a-digital-tablet.jpg?s=1024x1024&w=is&k=20&c=Y6-BlkHNvGzbgYreg6wPedGqbOfgxY4l8Z-sCARQ6SM=",
+    "decscritpion": "dsdsds",
+    "price": "200"
+  }
+]
