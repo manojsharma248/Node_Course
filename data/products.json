@@ -1,8 +1,1 @@
-[
-  {
-    "title": "A book",
-    "imageUrl": "https://media.istockphoto.com/id/1464539429/photo/thoughtful-business-man-with-a-digital-tablet.jpg?s=1024x1024&w=is&k=20&c=Y6-BlkHNvGzbgYreg6wPedGqbOfgxY4l8Z-sCARQ6SM=",
-    "decscritpion": "dsdsds",
-    "price": "200"
-  }
-]
+[{"id":"1234","title":"A Book","imageUrl":"https://www.publicdomainpictures.net/pictures/10000/velka/1-1210009435EGmE.jpg","description":"This is an awesome book!","price":"19"},{"title":"Another Product","imageUrl":"https://www.amazon.in/HUION-Graphics-Battery-Free-Education-Conference/dp/B095JYDNPN/?_encoding=UTF8&pd_rd_i=B095JYDNPN&pd_rd_w=m0KVX&content-id=amzn1.sym.54266ae0-89ca-4e6d-8d7c-dd5a40ca3101&pf_rd_p=54266ae0-89ca-4e6d-8d7c-dd5a40ca3101&pf_rd_r=JT3QJSSEWHDJT7WVHVB6&pd_rd_wg=uffZI&pd_rd_r=1eebe4ad-2b6a-4523-b33f-6a4deccd3e8b&ref_=deals","description":"sds","price":"500","id":"0.5608199809772463"}]
