@@ -1,14 +1,15 @@
-const fs = require("fs");
-const path = require("path");
-const Cart = require("./cart");
+const fs = require('fs');
+const path = require('path');
+
+const Cart = require('./cart');
 
 const p = path.join(
   path.dirname(process.mainModule.filename),
-  "data",
-  "products.json"
+  'data',
+  'products.json'
 );
 
-const getProductsFromFile = (cb) => {
+const getProductsFromFile = cb => {
   fs.readFile(p, (err, fileContent) => {
     if (err) {
       cb([]);
@@ -28,34 +29,31 @@ module.exports = class Product {
   }
 
   save() {
-    getProductsFromFile((products) => {
+    getProductsFromFile(products => {
       if (this.id) {
         const existingProductIndex = products.findIndex(
-          (product) => product.id == this.id
+          prod => prod.id === this.id
         );
-        const updateProducts = [...products];
-        updateProducts[existingProductIndex] = this;
-        fs.writeFile(p, JSON.stringify(updateProducts), (err) => {
+        const updatedProducts = [...products];
+        updatedProducts[existingProductIndex] = this;
+        fs.writeFile(p, JSON.stringify(updatedProducts), err => {
           console.log(err);
         });
       } else {
         this.id = Math.random().toString();
         products.push(this);
-        fs.writeFile(p, JSON.stringify(products), (err) => {
+        fs.writeFile(p, JSON.stringify(products), err => {
           console.log(err);
         });
       }
     });
   }
 
-  static fetchAll(cb) {
-    getProductsFromFile(cb);
-  }
   static deleteById(id) {
-    getProductsFromFile((products) => {
-      const product = products.filter((product) => product.id === id);
-      const filterProducts = products.filter((p) => p.id !== id);
-      fs.writeFile(p, JSON.stringify(filterProducts), (err) => {
+    getProductsFromFile(products => {
+      const product = products.find(prod => prod.id === id);
+      const updatedProducts = products.filter(prod => prod.id !== id);
+      fs.writeFile(p, JSON.stringify(updatedProducts), err => {
         if (!err) {
           Cart.deleteProduct(id, product.price);
         }
@@ -63,9 +61,13 @@ module.exports = class Product {
     });
   }
 
+  static fetchAll(cb) {
+    getProductsFromFile(cb);
+  }
+
   static findById(id, cb) {
-    getProductsFromFile((products) => {
-      const product = products.find((p) => p.id === id);
+    getProductsFromFile(products => {
+      const product = products.find(p => p.id === id);
       cb(product);
     });
   }
