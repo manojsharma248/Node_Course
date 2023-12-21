@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const errorController = require("./controllers/error");
-// const User = require("./models/user");
+const User = require("./models/user");
 
 const app = express();
 
@@ -37,6 +37,14 @@ mongoose
     "mongodb+srv://Mani:S9FHYgrYHQma7pRh@cluster0.7mzkqc4.mongodb.net/shop?retryWrites=true&w=majority"
   )
   .then((result) => {
+    const user = new User({
+      name: "Mani",
+      email: "mani@gmail.com",
+      cart: {
+        items: [],
+      },
+    });
+    user.save();
     app.listen(3000);
   })
   .catch((err) => {
