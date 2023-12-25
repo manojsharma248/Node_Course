@@ -33,14 +33,14 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  User.findById("6583d41329848f4b08c8d389")
-    .then((user) => {
-      req.user = user;
-      next();
-    })
-    .catch((err) => console.log(err));
-});
+// app.use((req, res, next) => {
+//   User.findById("6583d41329848f4b08c8d389")
+//     .then((user) => {
+//       req.user = user;
+//       next();
+//     })
+//     .catch((err) => console.log(err));
+// });
 
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
