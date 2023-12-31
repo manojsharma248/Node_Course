@@ -10,5 +10,6 @@ router.post(
   [body("content").trim().isLength({ min: 5 })],
   feedConroller.createPost
 );
+router.get("/post/:postId", feedConroller.getPost);
 
 module.exports = router;
