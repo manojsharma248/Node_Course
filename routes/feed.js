@@ -17,5 +17,6 @@ router.put(
   [body("content").trim().isLength({ min: 5 })],
   feedConroller.updatePost
 );
+router.delete("/post/:postId", feedConroller.deletePost);
 
 module.exports = router;
