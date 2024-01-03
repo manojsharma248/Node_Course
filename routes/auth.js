@@ -1,7 +1,7 @@
 const express = require("express");
 const { body } = require("express-validator");
 const User = require("../models/user");
-const authController = require("../controllers/auth");
+const authController = require("../controller/auth");
 const router = express.Router();
 router.put(
   "/signup",
@@ -18,7 +18,7 @@ router.put(
       })
       .normalizeEmail(),
     body("password").trim().isLength({ min: 5 }),
-    body("name").trim().not.isEmpty(),
+    body("name").trim().isLength({ min: 1 }),
   ],
   authController.signup
 );
