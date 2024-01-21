@@ -1,33 +1,35 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const validator = require("validator");
+
 module.exports = {
   createUser: async function ({ userInput }, req) {
+    const { email, name, password } = userInput;
     const errors = [];
-    if (!validator.isEmail(userInput.email)) {
+
+    if (!validator.isEmail(email)) {
       errors.push({ message: "Email is invalid!" });
     }
+
     if (
-      validator.isEmpty(userInput.password) ||
-      !validator.isLength(userInput.password, { min: 5 })
+      validator.isEmpty(password) ||
+      !validator.isLength(password, { min: 5 })
     ) {
       errors.push({ message: "Password must be at least 5 characters" });
     }
+
     if (errors.length > 0) {
-      const error = new Error("Invalid input!");
-      throw error;
+      throw new Error("Invalid input!");
     }
-    const existingUser = await User.findOne({ email: userInput.email });
+
+    const existingUser = await User.findOne({ email }, "_id");
     if (existingUser) {
-      const error = new Error(`User ${userInput.email} already exists`);
-      throw error;
+      throw new Error(`User ${email} already exists`);
     }
-    const hashPassword = await bcrypt.hash(userInput.password, 12);
-    const user = new User({
-      email: userInput.email,
-      name: userInput.name,
-      password: hashPassword,
-    });
+
+    const hashPassword = await bcrypt.hash(password, 12);
+    const user = new User({ email, name, password: hashPassword });
+
     const createdUser = await user.save();
     return { ...createdUser._doc, _id: createdUser._id.toString() };
   },
