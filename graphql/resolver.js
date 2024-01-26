@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const validator = require("validator");
-const jwt = require("jwtwebtoken");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   createUser: async function ({ userInput }, req) {
@@ -57,7 +57,7 @@ module.exports = {
         email: user.email,
       },
       "somesupperscecerts",
-      { expires: "1h" }
+      { expiresIn: "1h" }
     );
     return { token: token, userId: user._id.toString() };
   },
